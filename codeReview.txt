@@ -1,0 +1,37 @@
+In the first version of my project, I have simply made modifications so that the tests are passed and only few 
+changes to the code. For this purpose i have created a maven project and placed the test classes inside src/test/
+java instead of src/main/java folder because maven runs only the test classes placed in the test folder.
+
+Changes made to FlightBookingTest.java:
+Driver path has to be set before launching the browser otherwise we will get IllegalStateException. I have made that
+change by placing setDriverPath() before launching the browser.
+
+I have increased the waiting time for AutoSuggestions to load otherwise we will get NoSuchElementException.
+
+I have changed the locator strategy of picking the date from xpath by index to independent-dependent xpath which is 
+more reliable.
+
+Changes made to HotelBookingTest.java:
+Driver path has to be set before launching the browser otherwise we will get IllegalStateException. I have made that
+change by placing setDriverPath() before launching the browser.
+In the original code, we have not initialized the WebElements to their addresses given by their locators i.e. we have
+not used PageFactory.initElements(driver,this). If we don't use this then we will get NullPointerException. I have 
+added this step in the program.
+
+Changes made to SignInTest.java:
+Driver path has to be set before launching the browser otherwise we will get IllegalStateException. I have made that
+change by placing setDriverPath() before launching the browser.
+After clicking on 'Your trips' and then clicking on sign in option, a frame opens up. We need to switch to this frame
+before we perform any operation inside elements inside that frame. If we don't switch to that frame and try to perfo
+rm actions on its elements, we will get NoSuchElementException. To resolve this i have included a line where i have
+switched to this frame using driver.switchTo.frame(frameid).
+
+Driver executable file:
+I have placed the driver executable file of chrome inside drivers folder under the project and suitably changed the 
+code to point to that driver executable file.
+
+pom.xml:
+I have removed Junit dependency from pom.xml as we are not using it.
+ 
+
+
